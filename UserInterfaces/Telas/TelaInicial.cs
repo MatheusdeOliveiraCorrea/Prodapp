@@ -21,12 +21,17 @@ namespace UserInterfaces.Telas
 
         private void button3_Click(object sender, EventArgs e)
         {
+            panel1.Controls.Clear();
             new Cronometro().Show(); 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Auxiliar.AddNoPainel(panel1, new ListaAFazerFiscalizador(), this);
+        }
+
+        private void TelaInicial_Load(object sender, EventArgs e)
+        {
         }
     }
 }
