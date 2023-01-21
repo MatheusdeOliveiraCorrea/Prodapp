@@ -17,6 +17,24 @@ namespace UserInterfaces.Telas
             InitializeComponent();
             dataGridView1.Columns.Add("texto", "texto");
 
+            FormatarTexto();
+
+        }
+
+        private void FormatarTexto()
+        {
+            textBox1.Text = EscreverNaFrente(textBox1.Text, "Data:", " " + DateTime.Now.ToString("dd/MM/yyyy"));
+        }
+
+        private string EscreverNaFrente(string textoCompleto, string palavra, object valor)
+        {
+            var stringBuilder = new StringBuilder(textoCompleto);
+
+            var indicePalavra = textoCompleto.IndexOf(palavra) + palavra.Length;
+
+            stringBuilder.Insert(indicePalavra, " " + valor);
+
+            return stringBuilder.ToString();
         }
 
         private void apertouCntrlS(object sender, KeyEventArgs e)

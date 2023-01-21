@@ -42,7 +42,7 @@ namespace UserInterfaces.Telas
 
                 foreach (TreeNode pai in treeView1.Nodes)
                 {
-                    AdicionarElementoFilho(pai.Name, nodeFilho);
+                    AddElementoFilho(pai.Name, nodeFilho);
                 }
             }
 
@@ -54,10 +54,6 @@ namespace UserInterfaces.Telas
 
         private void FormatandoTreeView()
         {
-            treeView1.CheckBoxes = true;
-            treeView1.ShowLines = false;
-            treeView1.ShowPlusMinus = true;
-
             treeView1.AfterCheck += (o, e) =>
             {
                 if (e.Node is null)
@@ -78,7 +74,7 @@ namespace UserInterfaces.Telas
             treeView1.Nodes.Add(nodePai);
         }
 
-        private void AdicionarElementoFilho(string keyNodePai, TreeNode nodeFilho)
+        private void AddElementoFilho(string keyNodePai, TreeNode nodeFilho)
         {
             if (string.IsNullOrEmpty(keyNodePai) || string.IsNullOrEmpty(nodeFilho.Name))
                 return;

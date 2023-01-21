@@ -33,8 +33,10 @@
             // 
             // treeView1
             // 
+            this.treeView1.CheckBoxes = true;
             this.treeView1.Location = new System.Drawing.Point(363, 12);
             this.treeView1.Name = "treeView1";
+            this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(224, 438);
             this.treeView1.TabIndex = 0;
             // 
