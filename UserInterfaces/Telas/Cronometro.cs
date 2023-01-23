@@ -37,7 +37,7 @@ namespace UserInterfaces.Telas
 
                 iniciolabel.Text = $"{inicio.Hour:00}:{inicio.Minute:00}:{inicio.Second:00} - {inicio.Day:00}.{inicio.Month:00}.{inicio.Year:0000}";
 
-                Thread mudarHoraTela = new Thread(MudarHoraNaTela);
+                var mudarHoraTela = new Thread(MudarHoraNaTela);
                 mudarHoraTela.Start();
 
                 button1.BackColor = Color.IndianRed;
@@ -69,27 +69,17 @@ namespace UserInterfaces.Telas
 
                     var tempoDe = agora - inicio; 
 
-                    tempodecorrido.BeginInvoke(new Action(() => 
+                    tempodecorrido.BeginInvoke(() => 
                     {
-                        string embeddedXML = """
-                                             <element attr = "content">
-                                                 <body style="normal">
-                                                     Here is the main text
-                                                 </body>
-                                                 <footer>
-                                                     Excerpts from "An amazing story"
-                                                 </footer>
-                                             </element >
-                                             """;
+                        var texto = 
+                        $"""
+                          {tempoDe.Hours:00}  {tempoDe.Minutes:00}  {tempoDe.Seconds:00}  
+                          h  min  seg
+                         """;
 
-                        var teste = $"""
-                                     {tempoDe.Hours:00}  {tempoDe.Minutes:00}  {tempoDe.Seconds:00}  
-                                     h  min  seg
-                                    """;
-
-                        tempodecorrido.Text = teste;
+                        tempodecorrido.Text = texto;
                         tempodecorrido.Update();
-                    }));
+                    });
 
                     Thread.Sleep(500);
                 }

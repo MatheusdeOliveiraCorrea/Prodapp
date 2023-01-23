@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,7 +20,6 @@ namespace UserInterfaces.Telas
             dataGridView1.Columns.Add("texto", "texto");
 
             FormatarTexto();
-
         }
 
         private void FormatarTexto()
@@ -41,8 +42,41 @@ namespace UserInterfaces.Telas
         {
             if (e.Control && e.KeyCode == Keys.S)
             {
+                if(!string.IsNullOrEmpty(ObterTitulo()) && !string.IsNullOrEmpty(ObterSobre()))
                 SalvarConteudo(textBox1.Text);
             }
+        }
+
+        private string ObterTitulo()
+        {
+            var texto = textBox1.Text;
+
+            if (string.IsNullOrEmpty(texto))
+                throw new Exception("Texto Vazio");
+
+            var matchCollection = new Regex(@"\S+").Matches(texto);
+
+            var palavras = new List<string>();
+            matchCollection.ToList().ForEach(x => palavras.Add(x.Value));
+
+            var titulo = new StringBuilder(); 
+            foreach (var palavra in palavras)
+            {
+                if (palavra.Equals("Titulo:"))
+                    continue;
+
+                if (palavra.Equals("Sobre:"))
+                    break;
+
+                titulo.Append(palavra + " ");
+            }
+
+            return titulo.ToString(); 
+        }
+
+        private string ObterSobre() 
+        {
+            return "";
         }
 
         private void SalvarConteudo(string texto)
