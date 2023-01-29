@@ -11,7 +11,7 @@
 
             painel.Controls.Add(tela);
 
-            if(show is true)
+            if(show)
                 tela.Show();
         }
     }

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Banco\Banco.csproj" />
     <ProjectReference Include="..\LibUI\LibUI.csproj" />
     <ProjectReference Include="..\ProdAppCore\ProdAppCore.csproj" />
   </ItemGroup>

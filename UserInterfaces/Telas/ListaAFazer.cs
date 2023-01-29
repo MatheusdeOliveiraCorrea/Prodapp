@@ -22,8 +22,8 @@ namespace UserInterfaces.Telas
         {
             List<Tarefa> listaFazer = new List<Tarefa>
             {
-                new Tarefa {Title = "titulo qualquer", Status = 2},
-                new Tarefa {Title = "outro titulo", Status = 3}
+                new Tarefa {Titulo = "titulo qualquer", Status = 2},
+                new Tarefa {Titulo = "outro titulo", Status = 3}
             };
 
             CriarMenuGrid(); 
