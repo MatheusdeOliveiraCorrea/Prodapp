@@ -12,10 +12,27 @@ namespace Banco.Models
 
         public const int Completo = (int)Situacao.Concluido;
 
-        private enum Situacao
+        public static string ObterDescricao(int status)
         {
-            Incompleto = 0,
-            Concluido = 1
+            switch (status)
+            {
+                case Incompleto:
+                    return nameof(Incompleto);
+                    break;
+
+                case Completo:
+                    return nameof(Completo);
+                    break;
+
+                default:
+                    return string.Empty;
+            }
         }
+    }
+
+    public enum Situacao
+    {
+        Incompleto = 0,
+        Concluido = 1
     }
 }

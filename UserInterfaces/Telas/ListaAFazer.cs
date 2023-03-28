@@ -1,4 +1,5 @@
-﻿using ProdAppCore.Classes;
+﻿using Banco.Models;
+using ProdAppCore.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,15 +23,54 @@ namespace UserInterfaces.Telas
         {
             List<Tarefa> listaFazer = new List<Tarefa>
             {
-                new Tarefa {Titulo = "titulo qualquer", Status = 2},
-                new Tarefa {Titulo = "outro titulo", Status = 3}
+                new Tarefa {Titulo = "titulo qualquer", Status = Situacao.Concluido},
+                new Tarefa {Titulo = "outro titulo", Status = Situacao.Incompleto}
             };
 
-            CriarMenuGrid(); 
-
             gridFazer.DataSource = listaFazer;
+            EsconderColunas();
+
+            FormatarGrid();
+
+            CriarMenuGrid();
         }
-            
+
+        private void FormatarGrid()
+        {
+            var novaColunaSituacao = new DataGridViewColumn
+            {
+                HeaderText = "Situacao",
+                Name = "Situacao",
+                CellTemplate = new DataGridViewTextBoxCell()
+            };
+
+            gridFazer.Columns.Add(novaColunaSituacao);
+
+            var indexColunaSituacao = gridFazer.Columns[novaColunaSituacao.Name].Index;
+
+            gridFazer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            for (int i = 0; i < gridFazer.Rows.Count; i++)
+            {
+                var celulastatus = (int)gridFazer[nameof(Tarefa.Status), i].Value;
+
+                gridFazer[indexColunaSituacao, i].Value = Status.ObterDescricao(celulastatus);
+            }
+        }
+
+        private void EsconderColunas()
+        {
+            try
+            {
+                gridFazer.Columns[nameof(Tarefa.TarefaId)].Visible = false;
+                gridFazer.Columns[nameof(Tarefa.Status)].Visible = false;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void CriarMenuGrid()
         {
             var adicionar = new ToolStripMenuItem 
@@ -59,7 +99,9 @@ namespace UserInterfaces.Telas
 
         private void adicionar_Click(object? sender, EventArgs e)
         {
-            
+            //DataGridViewRow row = new DataGridViewRow();
+
+            //gridFazer.Rows.Add(row);
         }
 
         private void button1_Click(object sender, EventArgs e)

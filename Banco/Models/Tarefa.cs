@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Banco.Models;
+using Banco.Models;
 
 namespace ProdAppCore.Classes
 {
@@ -14,7 +16,7 @@ namespace ProdAppCore.Classes
         public string Conteudo { get; set; }
 
         [Required]
-        public int Status { get; set; }
+        public Situacao Status { get; set; }
         
         public Tarefa() 
         {

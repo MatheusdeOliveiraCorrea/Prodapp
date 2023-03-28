@@ -64,6 +64,8 @@
             // gridFazer
             // 
             this.gridFazer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridFazer.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridFazer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridFazer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridFazer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridFazer.Location = new System.Drawing.Point(3, 3);
@@ -86,6 +88,7 @@
             // dataGridView2
             // 
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
