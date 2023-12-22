@@ -1,5 +1,5 @@
 namespace UserInterfaces
-{
+{     
     internal static class Program
     {
         /// <summary>
